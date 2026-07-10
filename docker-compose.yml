@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+      - "8501:8501"
+    volumes:
+      - ./python_ai:/app/python_ai
+    networks:
+      - edge_net
+
+  engine:
+    build:
+      context: .
+      dockerfile: Dockerfile.engine
+    depends_on:
+      - backend
+    volumes:
+      - ./cpp_engine/models:/models
+    networks:
+      - edge_net
+
+networks:
+  edge_net:
+    driver: bridge

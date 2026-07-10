@@ -1,0 +1,27 @@
+# Dockerfile.engine
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    libcurl4-openssl-dev \
+    wget \
+    tar \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install ONNX Runtime Binaries for Linux x64
+WORKDIR /opt
+RUN wget https://github.com/microsoft/onnxruntime/releases/download/v1.16.3/onnxruntime-linux-x64-1.16.3.tgz \
+    && tar -zxvf onnxruntime-linux-x64-1.16.3.tgz \
+    && mv onnxruntime-linux-x64-1.16.3 onnxruntime
+
+WORKDIR /app
+COPY ./cpp_engine ./cpp_engine
+
+WORKDIR /app/cpp_engine
+RUN mkdir build && cd build && \
+    cmake -DONNXRUNTIME_INCLUDE_DIR=/opt/onnxruntime/include -DONNXRUNTIME_LIBRARY=/opt/onnxruntime/lib/libonnxruntime.so .. && \
+    make
+
+CMD ["./build/edge_guard_engine"]

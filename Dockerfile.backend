@@ -1,0 +1,14 @@
+# Dockerfile.backend
+FROM python:3.10-slim
+
+WORKDIR /app
+
+RUN pip install fastapi uvicorn requests streamlit pandas scikit-learn skl2onnx onnxruntime
+
+COPY ./python_ai ./python_ai
+
+EXPOSE 8000
+EXPOSE 8501
+
+# Shell script to run both FastAPI and Streamlit in parallel inside the container
+CMD uvicorn python_ai.server:app --host 0.0.0.0 --port 8000 & streamlit run python_ai/dashboard.py --server.port 8501 --server.address 0.0.0.0

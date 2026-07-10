@@ -1,0 +1,10 @@
+^C:\USERS\KRISH\PROJECT_02\EDGEGUARD\CPP_ENGINE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/krish/Project_02/EdgeGuard/cpp_engine -BC:/Users/krish/Project_02/EdgeGuard/cpp_engine/build_vs --check-stamp-file C:/Users/krish/Project_02/EdgeGuard/cpp_engine/build_vs/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
