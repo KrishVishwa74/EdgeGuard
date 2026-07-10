@@ -58,5 +58,5 @@ make
 
 ## 👨‍💻 Author
 
-Krish Kumar
-B.Tech CSE (AKTU)
+Krish Kumar Vishwakarma
+B.Tech CSE 
