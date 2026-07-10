@@ -1,16 +1,62 @@
-# EdgeGuard - Real-Time Threat Detection
+# 🚀 EdgeGuard: Real-Time Threat & Anomaly Detection System
 
-This project shows a simple real-time threat monitoring system.
+## 📌 Overview
 
-## Features
-- FastAPI backend
-- Streamlit dashboard
-- Live alert monitoring
+EdgeGuard is a real-time anomaly detection system designed to identify suspicious patterns using lightweight machine learning models running on edge devices.
 
-## How to run
+## 🧠 Features
 
-1. Run backend:
-uvicorn alert_server:app --reload
+* Real-time anomaly detection
+* Lightweight ML model (Isolation Forest)
+* ONNX-based fast inference (C++)
+* Python-based model training
+* Scalable and efficient
 
-2. Run dashboard:
-streamlit run dashboard.py
+## 🛠️ Tech Stack
+
+* C++ (Inference Engine)
+* Python (Model Training)
+* ONNX Runtime
+* Scikit-learn
+
+## 📂 Project Structure
+
+```
+EdgeGuard/
+│
+├── cpp_engine/      # C++ inference engine
+├── python_ai/       # Model training scripts
+├── models/          # Trained ONNX models
+├── data/            # Dataset
+```
+
+## ⚙️ Setup Instructions
+
+### 1. Train Model (Python)
+
+```bash
+cd python_ai
+python train_and_export.py
+```
+
+### 2. Run Inference Engine (C++)
+
+```bash
+cd cpp_engine
+mkdir build
+cd build
+cmake ..
+make
+./edge_guard_engine
+```
+
+## 📈 Future Improvements
+
+* Add real-time dashboard
+* Integrate live data streams
+* Improve model accuracy
+
+## 👨‍💻 Author
+
+Krish Kumar
+B.Tech CSE (AKTU)
