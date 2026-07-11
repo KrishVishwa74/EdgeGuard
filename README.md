@@ -56,6 +56,9 @@ make
 * Integrate live data streams
 * Improve model accuracy
 
+## 🌐 Live Demo
+[Click here to try EdgeGuard](https://myedgeguard.streamlit.app/)
+
 ## 👨‍💻 Author
 
 Krish Kumar Vishwakarma
